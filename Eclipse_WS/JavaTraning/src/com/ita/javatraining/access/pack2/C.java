@@ -1,8 +1,9 @@
 package com.ita.javatraining.access.pack2;
 
 import com.ita.javatraining.access.pack1.A;
+import com.ita.javatraining.access.pack1.TestInterface;
 
-public class C extends A
+public class C extends A implements TestInterface
 {
 
 	public static void main(String[] args) {
@@ -12,5 +13,12 @@ public class C extends A
 		//System.out.println("Default Member " + a.defaultMember);
 		System.out.println("Protected Member " + a.protectedMember);
 		System.out.println("Public Member " + a.publicMember);
+		a.test();
+	}
+
+	@Override
+	public void test() {
+		System.out.println("Author : " + author);
+		
 	}
 }
