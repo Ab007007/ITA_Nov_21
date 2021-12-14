@@ -1,0 +1,6 @@
+Hello
+my
+new 
+file is in text format
+My New Line
+My New LineHello all my new Bufferd writer demo 
