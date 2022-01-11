@@ -20,11 +20,9 @@ public class ActitimeUtils extends DriverUtils
 	public static void login(String un, String pwd)
 	{
 		System.out.println("Login to the application using " + un + " and " + pwd);
-		driver.findElement(By.id("username")).sendKeys(un);
-		driver.findElement(By.name("pwd")).sendKeys(pwd);
-		
-		driver.findElement(By.id("loginButton")).click();
-		
+		type("id", "username", un);
+		type("name", "pwd", pwd);
+		click("id", "loginButton");
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
@@ -37,8 +35,7 @@ public class ActitimeUtils extends DriverUtils
 	public static void clickOnTasks()
 	{
 		System.out.println("Clicking on Tasks Page");
-		driver.findElement(By.xpath("//div[text()='TASKS']/parent::a")).click();
-		
+		click("xpath", "//div[text()='TASKS']/parent::a");
 		String title = driver.getTitle();
 		if(title.equals("actiTIME - Task List"))
 		{
@@ -53,11 +50,10 @@ public class ActitimeUtils extends DriverUtils
 	public static void clickOnNEwCustomerButton()
 	{
 		System.out.println("Clicking on NEwCustomerButton ");
+		click("xpath", "//div[@class='addNewContainer']");
+		click("xpath", "//div[contains(text(),'New Cust')]");
 		
-		driver.findElement(By.xpath("//div[@class='addNewContainer']")).click();
-		driver.findElement(By.xpath("//div[contains(text(),'New Cust')]")).click();
-		
-		String customerCreationPage = driver.findElement(By.id("customerLightBox_titlePlaceholder")).getText();
+		String customerCreationPage = getText("id", "customerLightBox_titlePlaceholder"); 
 	
 	
 		if(customerCreationPage.equals("Create New Customer"))
@@ -73,10 +69,18 @@ public class ActitimeUtils extends DriverUtils
 	
 	public static void createCustomer(String cn, String cd)
 	{
-		driver.findElement(By.id("customerLightBox_nameField")).sendKeys(cn);
-		driver.findElement(By.id("customerLightBox_descriptionField")).sendKeys(cn);
-		driver.findElement(By.id("customerLightBox_commitBtn")).click();
+		type("id", "customerLightBox_nameField", cn);
+		type("id", "customerLightBox_descriptionField", cd);
+		click("id", "customerLightBox_commitBtn");
 		
+		validateSuccessMsg();
+		
+		System.out.println("Toast Message disappeared!!!");
+		
+	}
+	
+	public static void validateSuccessMsg()
+	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		
 		WebElement visibleSuccessMsg = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='toast']"))));
@@ -85,13 +89,12 @@ public class ActitimeUtils extends DriverUtils
 		
 		
 		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='toast']"))));
-		System.out.println("Toast Message disappeared!!!");
-		
 	}
 	
 	public static void logout() {
 		System.out.println("logout of application");
-		driver.findElement(By.id("logoutLink")).click();
+		click("id", "logoutLink");
+	
 	}
 	
 }
