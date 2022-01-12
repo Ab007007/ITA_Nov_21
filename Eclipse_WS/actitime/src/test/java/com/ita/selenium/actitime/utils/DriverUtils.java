@@ -123,17 +123,18 @@ public class DriverUtils {
 			
 		}
 		
-		if(ele.isDisplayed() && ele.isEnabled())
-		{
-			System.out.println("Element is Displayed and Enabled");
-			return ele;
-		}
-		else
-		{
-			System.out.println("Element is either not Displayed or Enabled");
-			return null;
-		}
+//		if(ele.isDisplayed() && ele.isEnabled())
+//		{
+//			System.out.println("Element is Displayed and Enabled");
+//			return ele;
+//		}
+//		else
+//		{
+//			System.out.println("Element is either not Displayed or Enabled");
+//			return null;
+//		}
 
+		return ele;
 	}
 
 	
