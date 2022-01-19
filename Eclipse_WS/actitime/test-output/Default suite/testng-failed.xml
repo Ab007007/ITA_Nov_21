@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <parameter name="password" value="manager"/>
+  <parameter name="browser" value="chrome"/>
+  <parameter name="url" value="http://localhost/login.do"/>
+  <parameter name="username" value="admin"/>
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.ita.selenium.actitime.test.LoginTest">
+        <methods>
+          <include name="loginWithInValidCredentials" invocation-numbers="0"/>
+          <include name="testResult"/>
+        </methods>
+      </class> <!-- com.ita.selenium.actitime.test.LoginTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

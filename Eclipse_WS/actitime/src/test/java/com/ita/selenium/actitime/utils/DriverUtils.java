@@ -1,8 +1,14 @@
 package com.ita.selenium.actitime.utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -174,7 +180,21 @@ public class DriverUtils {
 	}
 	
 	
-	
+	public static void captureScreenShot()
+	{
+		System.out.println("Capturing Screen Shot");
+		TakesScreenshot ss = (TakesScreenshot)driver;
+		String dateAndtime = new Date().toString().replace(" ", "_").replace(":", "_");
+		File screenShot = ss.getScreenshotAs(OutputType.FILE);
+		
+		try {
+			FileUtils.copyFile(screenShot, new File("target\\screenshots\\SS_"+dateAndtime + ".png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	

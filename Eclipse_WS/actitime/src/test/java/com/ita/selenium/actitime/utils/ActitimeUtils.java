@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import junit.framework.Assert;
+
 public class ActitimeUtils extends DriverUtils
 {
 	
@@ -15,8 +17,16 @@ public class ActitimeUtils extends DriverUtils
 	{
 		System.out.println("Launching Application " + url);
 		driver.get(url);
+		validateTitle("actiTIME - Login");
+
 	}
 
+	public static void validateTitle(String expectedTitle)
+	{
+		System.out.println("Validating titile of the Page : " + expectedTitle);
+		String actualTitle = driver.getTitle();
+		Assert.assertEquals(expectedTitle, actualTitle);
+	}
 	public static void login(String un, String pwd)
 	{
 		System.out.println("Login to the application using " + un + " and " + pwd);
@@ -29,6 +39,7 @@ public class ActitimeUtils extends DriverUtils
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		validateTitle("actiTIME - Enter Time-Track");
 	}
 	
 	
@@ -37,14 +48,7 @@ public class ActitimeUtils extends DriverUtils
 		System.out.println("Clicking on Tasks Page");
 		click("xpath", "//div[text()='TASKS']/parent::a");
 		String title = driver.getTitle();
-		if(title.equals("actiTIME - Task List"))
-		{
-			System.out.println("Tasks  Page Displayed");
-		}
-		else
-		{
-			System.out.println("Task page is not displayed");
-		}
+		validateTitle("actiTIME - Task List");
 	}
 	
 	public static void clickOnNEwCustomerButton()
@@ -94,7 +98,7 @@ public class ActitimeUtils extends DriverUtils
 	public static void logout() {
 		System.out.println("logout of application");
 		click("id", "logoutLink");
-	
+		validateTitle("actiTIME - Login");
 	}
 	
 }
