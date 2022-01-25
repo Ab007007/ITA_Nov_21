@@ -1,78 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="20703" started-at="2022-01-20T16:47:13Z" finished-at="2022-01-20T16:47:34Z">
+  <suite name="Default suite" duration-ms="10374" started-at="2022-01-24T17:23:22Z" finished-at="2022-01-24T17:23:33Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="20703" started-at="2022-01-20T16:47:13Z" finished-at="2022-01-20T16:47:34Z">
-      <class name="pom.test.LoginTest">
-        <test-method status="PASS" signature="setupReports()[pri:0, instance:pom.test.LoginTest@6f1fba17]" name="setupReports" is-config="true" duration-ms="129" started-at="2022-01-20T16:47:13Z" finished-at="2022-01-20T16:47:13Z">
+    <test name="Default test" duration-ms="10374" started-at="2022-01-24T17:23:22Z" finished-at="2022-01-24T17:23:33Z">
+      <class name="newfeatures.PageLoadingStratergy">
+        <test-method status="PASS" signature="test()[pri:0, instance:newfeatures.PageLoadingStratergy@520a3426]" name="test" duration-ms="10326" started-at="2022-01-24T17:23:22Z" finished-at="2022-01-24T17:23:33Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setupReports -->
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:pom.test.LoginTest@6f1fba17]" name="setup" is-config="true" duration-ms="4878" started-at="2022-01-20T16:47:13Z" finished-at="2022-01-20T16:47:18Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="loginAndGoToTaskTest(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:pom.test.LoginTest@6f1fba17]" name="loginAndGoToTaskTest" duration-ms="10122" started-at="2022-01-20T16:47:18Z" finished-at="2022-01-20T16:47:28Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[http://localhost/login.do]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[admin]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[manager]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginAndGoToTaskTest -->
-        <test-method status="PASS" signature="loginAndLogoutTest(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:pom.test.LoginTest@6f1fba17]" name="loginAndLogoutTest" duration-ms="5577" started-at="2022-01-20T16:47:28Z" finished-at="2022-01-20T16:47:34Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[http://localhost/login.do]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[admin]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[manager]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginAndLogoutTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:pom.test.LoginTest@6f1fba17]" name="tearDown" is-config="true" duration-ms="83" started-at="2022-01-20T16:47:34Z" finished-at="2022-01-20T16:47:34Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="saveReports()[pri:0, instance:pom.test.LoginTest@6f1fba17]" name="saveReports" is-config="true" duration-ms="351" started-at="2022-01-20T16:47:34Z" finished-at="2022-01-20T16:47:34Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- saveReports -->
-      </class> <!-- pom.test.LoginTest -->
+        </test-method> <!-- test -->
+      </class> <!-- newfeatures.PageLoadingStratergy -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -2,20 +2,28 @@ package com.ita.selenium.actitime.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -64,6 +72,60 @@ public class DriverUtils {
 		case "edge":
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
+			break;
+
+		default:
+			System.out.println("Please contact Framework Developer to support " + type + " Browser");
+			break;
+		}
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		return driver;
+	}
+	
+	public static WebDriver getRemoteDriver(String hubURL, String type)  {
+		System.out.println("Creating driver for " + type + " browser");
+
+		switch (type.toLowerCase()) {
+		case "chrome":
+			ChromeOptions options = new ChromeOptions();
+			options.setCapability(CapabilityType.PLATFORM_NAME, Platform.WINDOWS);
+			options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+			options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			options.addArguments("disable-infobars");
+			try {
+				driver = new RemoteWebDriver(new URL(hubURL), options);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  //"http://172.27.60.241:4444"
+			break;
+		case "ff":
+			FirefoxOptions foptions = new FirefoxOptions();
+			foptions.addPreference("browserName", "firefox");
+			foptions.addPreference("browserversion", "55.0.2");
+			foptions.addPreference("network.proxy.type", 0);
+			foptions.setAcceptInsecureCerts(true);
+			try {
+				driver = new RemoteWebDriver(new URL("http://172.27.60.241:4444"), foptions);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "edge":
+			EdgeOptions eoptions = new EdgeOptions();
+			eoptions.setCapability(CapabilityType.PLATFORM_NAME, Platform.WINDOWS);
+			eoptions.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+			eoptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			eoptions.addArguments("disable-infobars");
+			try {
+				driver = new RemoteWebDriver(new URL("http://172.27.60.241:4444"), eoptions);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 
 		default:

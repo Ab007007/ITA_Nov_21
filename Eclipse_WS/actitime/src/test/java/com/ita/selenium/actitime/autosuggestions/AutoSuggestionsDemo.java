@@ -15,7 +15,7 @@ public class AutoSuggestionsDemo {
 	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriver driver = DriverUtils.getDriver();
-		ActitimeUtils.launch("https://www.google.com/");
+		driver.get("https://www.google.com/");
 		
 		driver.findElement(By.name("q")).sendKeys("IBM");
 		

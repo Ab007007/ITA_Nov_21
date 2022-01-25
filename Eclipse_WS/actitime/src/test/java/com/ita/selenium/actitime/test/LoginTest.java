@@ -17,7 +17,8 @@ public class LoginTest {
 	@Parameters({"url","username","password","browser"})
 	public void loginWithValidCredentials(String url, String un, String pwd, String bw)
 	{
-		driver = ActitimeUtils.getDriver(bw);
+//		driver =  ActitimeUtils.getDriver(bw);
+		driver =  ActitimeUtils.getRemoteDriver("http://172.27.60.241:4444", "ff");
 		ActitimeUtils.launch(url);
 		ActitimeUtils.login(un,pwd);
 		ActitimeUtils.logout();
@@ -27,7 +28,7 @@ public class LoginTest {
 	@Parameters({"url","username","password","browser"})
 	public void loginWithInValidCredentials(String url, String un, String pwd, String bw)
 	{
-		driver = ActitimeUtils.getDriver(bw);
+		driver = ActitimeUtils.getRemoteDriver("http://172.27.60.241:4444", "chrome");
 		ActitimeUtils.launch(url);
 		ActitimeUtils.login("12313",pwd);
 		ActitimeUtils.logout();
