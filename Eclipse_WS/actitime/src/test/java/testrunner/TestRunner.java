@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
 		//		tags = "@regression and @actitime",
 		//	tags = "@regression or @actitime",
 		//	tags = "@regression and not @actitime",
-		tags = "@bg",
+		tags = "@newTest",
 		monochrome = true,
 		plugin = { "pretty","junit:target/JunitReports/report.xml",
 							"json:target/JsonReports/report.json",
